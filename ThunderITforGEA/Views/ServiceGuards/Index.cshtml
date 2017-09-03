@@ -1,0 +1,110 @@
+﻿@model IEnumerable<ThunderITforGEA.Models.ServiceGuard>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nr_karty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nr_tel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lokalizacja)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.aktualny_czas)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.przedzial_serwisowy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.do_serwisu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ostatni_serwis)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ostatni_alarm)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.licznik_sms)
+        </th>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.jezyk)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.firma)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nrSuperVisor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nrServiceCenter)
+        </th>
+     
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nr_karty)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nr_tel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.lokalizacja)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.aktualny_czas)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.przedzial_serwisowy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.do_serwisu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ostatni_serwis)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ostatni_alarm)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.licznik_sms)
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.jezyk)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.firma)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nrSuperVisor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nrServiceCenter)
+        </td>
+      
+        <td>
+            @Html.ActionLink("Edycja", "Edit", new { id=item.serial_number }) |
+           
+            @Html.ActionLink("Usuń", "Delete", new { id=item.serial_number })
+        </td>
+    </tr>
+}
+
+</table>

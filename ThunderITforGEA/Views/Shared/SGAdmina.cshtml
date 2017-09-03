@@ -1,0 +1,317 @@
+﻿@model IEnumerable<ThunderITforGEA.Models.ServiceGuard>
+
+@{
+    ViewBag.Title = "Index";
+}
+@Scripts.Render("~/bundles/jquery")
+
+<script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")" type="text/javascript"></script> 
+<h2>Dane dla @ViewBag.nrServiceGuard</h2>
+
+<button class="btn btn-default" id="aktualizujDane">Aktualizuj dane</button>
+<button class="btn btn-default" id="zrobSerwis">Zrób serwis</button>
+
+<button class="btn btn-default" id="przedzialSerwisu">Zmień przedział serwisu</button>
+<button class="btn btn-default" id="czasTotal">Zmień czas total</button>
+
+<button class="btn btn-default" id="jezyk">Zmień język</button>
+<button class="btn btn-default" id="nrSeryjny">Zmień numer seryjny</button>
+
+<button class="btn btn-default" id="nrSeryjny">Zmień numer seryjny</button>
+<button class="btn btn-default" id="nrSuperVisor">Zmień numer SuperVisor</button>
+<button class="btn btn-default" id="nrServiceCenter">Zmień numer ServiceCenter</button>
+
+
+
+
+
+       
+ 
+              
+            
+
+
+<p>Twoje dane:</p>
+<div class="row">
+    <div class="col-md-6">
+       
+        @Html.DisplayNameFor(model => model.aktualny_czas)
+        @Html.DisplayFor(model => Model.First().aktualny_czas)
+        <br>
+        @Html.DisplayNameFor(model => model.nr_tel)
+        @Html.DisplayFor(model => Model.First().nr_tel)
+        <br>
+        @Html.DisplayNameFor(model => model.lokalizacja)
+        @Html.DisplayFor(model => Model.First().lokalizacja)
+        <br>
+        @Html.DisplayNameFor(model => model.przedzial_serwisowy)
+        @Html.DisplayFor(model => Model.First().przedzial_serwisowy)
+        <br>
+
+    </div>
+    <div class="col-md-6">
+        @Html.DisplayNameFor(model =>model.ostatni_alarm)
+        @Html.DisplayFor(model => Model.First().ostatni_alarm)
+        <br>
+        @Html.DisplayNameFor(model => model.ostatni_serwis)
+        @Html.DisplayFor(model => model.First().ostatni_serwis)
+        <br>
+        @Html.DisplayNameFor(model => model.nrSuperVisor)
+        @Html.DisplayFor(model => Model.First().nrSuperVisor)
+        <br>
+        @Html.DisplayNameFor(model => model.nrServiceCenter)
+        @Html.DisplayFor(model => Model.First().nrServiceCenter)
+    </div>
+
+</div>
+<hr />
+@foreach (var uzytkownik in Model)
+{
+    <div class="row">
+        <div class="col-md-12">
+
+            Imię nazwisko:
+            @Html.DisplayFor(model=>uzytkownik.AspNetUsers.FirstOrDefault().imie)  @Html.DisplayFor(model=>uzytkownik.AspNetUsers.FirstOrDefault().nazwisko)
+            <br>
+            Adres:
+            @Html.DisplayFor(model => uzytkownik.AspNetUsers.FirstOrDefault().adres)
+            <br>
+            Telefon:
+            @Html.DisplayFor(model => uzytkownik.AspNetUsers.FirstOrDefault().telefon)
+            <br>
+            Email:
+            @Html.DisplayFor(model => uzytkownik.AspNetUsers.FirstOrDefault().Email)
+            <br>
+
+        </div>
+       
+
+    </div>
+}
+<input type="hidden" id="przechowajSN" value="@ViewBag.nrServiceGuard" />
+
+
+
+<div id="divLoading" style="margin: 0px; padding: 0px; position: fixed; right: 0px;
+    top: 0px; width: 100%; height: 100%; background-color: #666666; z-index: 30001;
+    opacity: .8; filter: alpha(opacity=70);display:none">
+    <p style="position: absolute; top: 30%; left: 45%; color: White;">
+        Oczekiwanie na dane...<img src="../../Content/ajax-loading.gif">
+    </p>
+</div>
+<script>
+    document.getElementById("przedzialSerwisu").addEventListener("click", zmienPrzedzialCzasu, false);
+    document.getElementById("aktualizujDane").addEventListener("click", aktualizuj, false);
+    document.getElementById("zrobSerwis").addEventListener("click", zrobSerwis, false);
+
+    document.getElementById("czasTotal").addEventListener("click", czasTotal, false);
+    document.getElementById("czasStartowy").addEventListener("click", czasStartowy, false);
+
+    document.getElementById("nrSeryjny").addEventListener("click", numerSeryjny, false);
+    document.getElementById("nrSuperVisor").addEventListener("click", superVisor, false);
+
+    document.getElementById("nrServiceCenter").addEventListener("click", serviceCenter, false);
+
+
+
+
+    document.getElementById("jezyk").addEventListener("click", jezyk, false);
+
+   
+    var myvar;
+    function przeladujStrone() {
+        location.reload(true);
+    }
+    function zmienPrzedzialCzasu() {
+        var id = document.getElementById("przechowajSN").value;
+        var czas = prompt("Wpisz nowy przedział");
+     
+        if (czas != null) {
+            var rodzaj = prompt("Wpisz rodzaj serwisu")
+            if(rodzaj !=null)
+            {
+                var vm = { nrServiceGuard: id, liczbaGodzin: czas, rodzajSerwisu: rodzaj };
+                $("#divLoading").show();
+                $.ajax({
+                    url: "SerialPort/zmienPrzedzialSerwisu",
+                    type: "POST",
+                    async: true,
+                    dataType: "html",
+                    data: vm,
+                    success: function (data) {
+                     
+                        myvar =window.setTimeout(przeladujStrone, 60000);
+                    },
+                });
+            }
+        }
+    }
+    function aktualizuj() {
+        var id = document.getElementById("przechowajSN").value;
+        
+
+       
+            $("#divLoading").show();
+
+            var vm = { nrServiceGuard: id};
+            $.ajax({
+                url: "SerialPort/aktualizujDane",
+                type: "POST",
+                async: true,
+                dataType: "html",
+                data: vm,
+                success: function (data) {
+                    myvar = window.setTimeout(przeladujStrone, 60000);
+                },
+            });
+
+        
+    };
+    function zrobSerwis() {
+        var id = document.getElementById("przechowajSN").value;
+
+
+
+        $("#divLoading").show();
+
+        var vm = { nrServiceGuard: id };
+        $.ajax({
+            url: "SerialPort/zrobSerwis",
+            type: "POST",
+            async: true,
+            dataType: "html",
+            data: vm,
+            success: function (data) {
+                myvar = window.setTimeout(przeladujStrone, 60000);
+            },
+        });
+
+
+    };
+        function jezyk() {
+            var id = document.getElementById("przechowajSN").value;
+            var jezyk = prompt("Wpisz nowy kod języka");
+
+            if (jezyk != null) {
+                $("#divLoading").show();
+
+                var vm = { nrServiceGuard: id, kodJezyka: jezyk };
+                $.ajax({
+                    url: "SerialPort/zmienJezyk",
+                    type: "POST",
+                    async: true,
+                    dataType: "html",
+                    data: vm,
+                    success: function (data) {
+                        myvar = window.setTimeout(przeladujStrone, 60000);
+                    },
+                });
+
+            }
+        };
+        function czasStartowy() {
+            var id = document.getElementById("przechowajSN").value;
+            var czas = prompt("Ustaw czas startowy");
+
+            if (czas != null) {
+                $("#divLoading").show();
+
+                var vm = { nrServiceGuard: id, iloscGodzin: czas };
+                $.ajax({
+                    url: "SerialPort/zmienCzasStartowy",
+                    type: "POST",
+                    async: true,
+                    dataType: "html",
+                    data: vm,
+                    success: function (data) {
+                        myvar = window.setTimeout(przeladujStrone, 60000);
+                    },
+                });
+
+            }
+        };
+        function czasTotal() {
+            var id = document.getElementById("przechowajSN").value;
+            var czas = prompt("Wpisz nowy czas total");
+
+            if (czas != null) {
+                $("#divLoading").show();
+
+                var vm = { nrServiceGuard: id, iloscGodzin: czas };
+                $.ajax({
+                    url: "SerialPort/ustawCzasTotal",
+                    type: "POST",
+                    async: true,
+                    dataType: "html",
+                    data: vm,
+                    success: function (data) {
+                        myvar = window.setTimeout(przeladujStrone, 60000);
+                    },
+                });
+
+            }
+        };
+        function serviceCenter() {
+            var id = document.getElementById("przechowajSN").value;
+            var numer = prompt("Podaj nowy numer ServiceCenter");
+
+            if (numer != null) {
+                $("#divLoading").show();
+
+                var vm = { nrServiceGuard: id, nrServiceCenter: numer };
+                $.ajax({
+                    url: "SerialPort/zmienNumerServiceCenter",
+                    type: "POST",
+                    async: true,
+                    dataType: "html",
+                    data: vm,
+                    success: function (data) {
+                        myvar = window.setTimeout(przeladujStrone, 60000);
+                    },
+                });
+
+            }
+        };
+        function superVisor() {
+            var id = document.getElementById("przechowajSN").value;
+            var numer = prompt("Podaj nowy numer SuperVisor");
+
+            if (numer != null) {
+                $("#divLoading").show();
+
+                var vm = { nrServiceGuard: id, nrSuperVisor: numer };
+                $.ajax({
+                    url: "SerialPort/zmienNumerSuperVisor",
+                    type: "POST",
+                    async: true,
+                    dataType: "html",
+                    data: vm,
+                    success: function (data) {
+                        myvar = window.setTimeout(przeladujStrone, 60000);
+                    },
+                });
+
+            }
+        };
+        function numerSeryjny() {
+            var id = document.getElementById("przechowajSN").value;
+            var numer = prompt("Podaj nowy numer seryjny");
+
+            if (numer != null) {
+                $("#divLoading").show();
+
+                var vm = { nrServiceGuard: id, serialNumber: numer };
+                $.ajax({
+                    url: "SerialPort/zmienSerialNumber",
+                    type: "POST",
+                    async: true,
+                    dataType: "html",
+                    data: vm,
+                    success: function (data) {
+                        myvar = window.setTimeout(przeladujStrone, 60000);
+                    },
+                });
+
+            }
+        };
+</script>

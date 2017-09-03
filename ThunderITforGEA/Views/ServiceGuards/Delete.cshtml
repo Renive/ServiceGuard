@@ -1,0 +1,152 @@
+﻿@model ThunderITforGEA.Models.ServiceGuard
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>ServiceGuard</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nr_karty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nr_karty)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nr_tel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nr_tel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lokalizacja)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lokalizacja)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.aktualny_czas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.aktualny_czas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.przedzial_serwisowy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.przedzial_serwisowy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.do_serwisu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.do_serwisu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ostatni_serwis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ostatni_serwis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ostatni_alarm)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ostatni_alarm)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.licznik_sms)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.licznik_sms)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.user_id_u)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user_id_u)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.jezyk)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.jezyk)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.firma)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.firma)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nrSuperVisor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nrSuperVisor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nrServiceCenter)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nrServiceCenter)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ServiceManager.nr_tel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServiceManager.nr_tel)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

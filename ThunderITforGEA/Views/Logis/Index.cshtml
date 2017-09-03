@@ -1,0 +1,35 @@
+﻿@model IEnumerable<ThunderITforGEA.Models.Logi>
+
+@{
+    ViewBag.Title = "Logi";
+}
+
+
+<table class="table">
+    <tr>
+      
+        <th>
+            @Html.DisplayNameFor(model => model.co_zrobil)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.czas)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.co_zrobil)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.czas)
+        </td>
+        <td>
+            @Html.ActionLink("Usuń", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,98 @@
+﻿@model IEnumerable<ThunderITforGEA.Models.ServiceGuard>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@using (Html.BeginForm("doPaneluDealera","Home"))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <br>
+    <p>
+        Wpisz numer seryjny : @Html.TextBox("serialNumberSG")
+    </p>
+    <input type="submit" value="Dalej" id="guzikDalej" />
+}
+<br>
+@Html.ActionLink("Dodaj klienta", "DodajKlienta", "Home", null, new { @class = "btn btn-default" })
+<br />
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().serial_number)
+        </th>
+        <th>
+           Imię i nazwisko
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().do_serwisu)
+        </th>
+    </tr>
+    @{int i = 0;}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.serial_number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AspNetUsers.FirstOrDefault().imie) @Html.DisplayFor(modelItem => item.AspNetUsers.FirstOrDefault().nazwisko)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.do_serwisu)
+            </td>
+            @try { 
+            if (item.Alarmy.FirstOrDefault().wykonal==null)
+            {
+                <td>
+                    <img width="30"  src='@Url.Content("~/Content/exclamation_mark.png")' alt="Image" />
+                </td>
+            }
+            else
+            {
+                //placeholder na jakiś inny obrazek, typu zielony kciuk
+                <td>
+                    <img width="30" />
+                </td>
+            }
+            }
+            catch (Exception x)
+            {
+            <td>
+                <img width="30" style="visibility:hidden;"src='@Url.Content("~/Content/exclamation_mark.png")' alt="Image" />
+            </td> }
+            <td>
+                <button class="btn btn-default" onclick="przepiszSerialNumber(this.id)" id="@item.serial_number">Pokaż...</button>
+            </td>
+        </tr>
+        i++;
+    }
+
+</table>
+
+
+   
+    <script>
+
+        function przepiszSerialNumber(id) {
+          
+            var vm = { serialNumberSG: id };
+            $.ajax({
+                url: "Home/doPaneluDealera",
+                type: "POST",
+                async: true,
+                dataType: "html",
+                data: vm,
+                success: function (data) {
+                    $('body').empty().html(data);
+                },
+            });
+        };
+
+    
+        
+
+
+
+    </script>

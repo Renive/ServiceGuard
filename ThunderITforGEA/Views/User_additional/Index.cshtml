@@ -1,0 +1,87 @@
+﻿@model IEnumerable<ThunderITforGEA.Models.User_additional>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.numer_serial)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ostatni_serwis)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.data_ostatniego_serwisu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nr_tel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nr_lac)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.czas_pracy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nr_cid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.godziny_serwisowe)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nr_gea)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AspNetUser.PasswordHash)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.numer_serial)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ostatni_serwis)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.data_ostatniego_serwisu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nr_tel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nr_lac)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.czas_pracy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nr_cid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.godziny_serwisowe)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nr_gea)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AspNetUser.PasswordHash)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id_ua }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id_ua }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id_ua })
+        </td>
+    </tr>
+}
+
+</table>

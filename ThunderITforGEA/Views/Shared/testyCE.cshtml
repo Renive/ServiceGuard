@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "ManageUserRoles";
+}
+
+
+
+@using (Html.BeginForm("startTesty", "SerialPort"))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <p>
+        Numer Telefonu : @Html.TextBox("nrTel")
+        Interwał w milisekundach: @Html.TextBox("interwal")
+
+    </p>
+
+    <input type="submit" value="Start" />
+}
+<input type="button" value="Stop" onclick="location.href='@Url.Action("stopTesty", "SerialPort")'" />
+<hr/>
+

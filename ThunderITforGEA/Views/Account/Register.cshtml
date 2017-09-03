@@ -1,0 +1,124 @@
+﻿@model ThunderITforGEA.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Zarejestruj się";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <h4>Stwórz swoje konto. Loginem będzie Nazwisko.[2 pierwsze litery imienia].</h4>
+    <hr />
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+        </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.imie, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.imie, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.nazwisko, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.nazwisko, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.firma, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                <select id="firma" name="firma" class="form-control">
+
+
+
+                    <option value="GEA FT">GEA FT</option>
+
+                    <option value="BO-RO Wilary">BO-RO Wilary</option>
+
+                    <option value="AGRO-TOP Robert Jabłoński">AGRO-TOP Robert Jabłoński</option>
+                    <option value="Andrzej Oleksy">Andrzej Oleksy</option>
+                    <option value="Antkowiak">Antkowiak</option>
+                    <option value="Dariusz Matyjaszewski">Dariusz Matyjaszewski</option>
+                    <option value="AgroSerwis">AgroSerwis</option>
+                    <option value="Konrad Głażewski">Konrad Głażewski</option>
+                    <option value="Henryk Wiąz">Henryk Wiąz</option>
+                    <option value="Rolmot">Rolmot</option>
+                    <option value="Sebastian Kiwic">Sebastian Kiwic</option>
+                    <option value="P.P.H.U MLEKO-SYSTEM">P.P.H.U MLEKO-SYSTEM</option>
+                    <option value="AgroZet">AgroZet</option>
+
+                    <option value="ROL-BRAT s.c.">ROL-BRAT s.c.</option>
+
+                    <option value="Romual i Adam Zawadzccy">Romual i Adam Zawadzccy</option>
+
+                    <option value="Romuald Krupski">Romuald Krupski</option>
+
+                    <option value="Ryszard Buczma">Ryszard Buczma</option>
+
+                    <option value="SKLEP PASZOWY Edward Borzym">SKLEP PASZOWY Edward Borzym</option>
+                    <option value="Stanisław Wawrzyniak">Stanisław Wawrzyniak</option>
+                    <option value="Stanisław Wielgut">Stanisław Wielgut</option>
+                    <option value="VET OL Prywatna Lecznica dla Zwierząt">VET OL Prywatna Lecznica dla Zwierząt</option>
+                    <option value="Waldemar Bujak">Waldemar Bujak</option>
+                    <option value="Waldemar Wyrodek">Waldemar Wyrodek</option>
+                    <option value="Zbigniew Poremba">Zbigniew Poremba</option>
+                    <option value="DanZap">DanZap</option>
+                    <option value="AgoPasz">AgoPasz</option>
+                    <option value="ARTMANN">ARTMANN</option>
+                    <option value="Edmasz">Edmasz</option>
+                    <option value="Poltrade">Poltrade</option>
+
+
+                </select>            </div>
+        </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.adres, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.adres, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.miasto, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.miasto, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.kraj, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.kraj, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.telefon, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.telefon, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-default" value="Rejestruj" />
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

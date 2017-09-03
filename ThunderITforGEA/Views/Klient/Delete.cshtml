@@ -1,0 +1,192 @@
+﻿@model ThunderITforGEA.Models.Klient
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Klient</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.imie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.imie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nazwisko)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nazwisko)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.firma)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.firma)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.adres)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.adres)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.miasto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.miasto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.kraj)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.kraj)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.telefon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.telefon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ilosc_krow)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ilosc_krow)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.udoj_per_day)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.udoj_per_day)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.wydajnosc_stada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.wydajnosc_stada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.manager_fs)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.manager_fs)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.techniczny)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.techniczny)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.manager_sprzedazy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.manager_sprzedazy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.typ_obory)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.typ_obory)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.obora_dlugosc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.obora_dlugosc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.obora_szerokosc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.obora_szerokosc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.obora_rokbudowy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.obora_rokbudowy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.rodzaj_sciolki)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rodzaj_sciolki)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.typ_obory2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.typ_obory2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ServiceGuard.nr_karty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServiceGuard.nr_karty)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

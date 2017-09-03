@@ -1,0 +1,690 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ThunderITForGEA.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Alarmy">
+          <Key>
+            <PropertyRef Name="Id_a" />
+          </Key>
+          <Property Name="Id_a" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="data_alarmu" Type="date" />
+          <Property Name="typ_alarmu" Type="varchar" MaxLength="5" />
+          <Property Name="status" Type="varchar" MaxLength="20" />
+          <Property Name="wykonal" Type="varchar" MaxLength="15" />
+          <Property Name="ServiceGuard_id_sg" Type="varchar" MaxLength="8" />
+          <Property Name="data_wykonania" Type="date" />
+          <Property Name="serial_number" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="login" Type="nvarchar(max)" />
+          <Property Name="imie" Type="nvarchar(max)" />
+          <Property Name="nazwisko" Type="nvarchar(max)" />
+          <Property Name="firma" Type="nvarchar(max)" />
+          <Property Name="adres" Type="nvarchar(max)" />
+          <Property Name="miasto" Type="nvarchar(max)" />
+          <Property Name="kraj" Type="nvarchar(max)" />
+          <Property Name="telefon" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Biling">
+          <Key>
+            <PropertyRef Name="Id_b" />
+          </Key>
+          <Property Name="Id_b" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="data" Type="datetime2" Precision="7" />
+          <Property Name="tresc" Type="varchar" MaxLength="50" />
+          <Property Name="login" Type="varchar" MaxLength="20" />
+          <Property Name="ServiceGuard_id_sg" Type="varchar" MaxLength="8" />
+        </EntityType>
+        <EntityType Name="Klient">
+          <Key>
+            <PropertyRef Name="Id_k" />
+          </Key>
+          <Property Name="Id_k" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="imie" Type="varchar" MaxLength="50" />
+          <Property Name="nazwisko" Type="varchar" MaxLength="50" />
+          <Property Name="firma" Type="varchar" MaxLength="50" />
+          <Property Name="adres" Type="varchar" MaxLength="50" />
+          <Property Name="miasto" Type="varchar" MaxLength="50" />
+          <Property Name="kraj" Type="varchar" MaxLength="50" />
+          <Property Name="telefon" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Id_k_SG" Type="varchar" MaxLength="8" />
+          <Property Name="ilosc_krow" Type="varchar" MaxLength="50" />
+          <Property Name="udoj_per_day" Type="varchar" MaxLength="50" />
+          <Property Name="wydajnosc_stada" Type="varchar" MaxLength="50" />
+          <Property Name="manager_fs" Type="varchar" MaxLength="50" />
+          <Property Name="techniczny" Type="varchar" MaxLength="50" />
+          <Property Name="manager_sprzedazy" Type="varchar" MaxLength="50" />
+          <Property Name="typ_obory" Type="varchar" MaxLength="50" />
+          <Property Name="obora_dlugosc" Type="varchar" MaxLength="50" />
+          <Property Name="obora_szerokosc" Type="varchar" MaxLength="50" />
+          <Property Name="obora_rokbudowy" Type="varchar" MaxLength="50" />
+          <Property Name="rodzaj_sciolki" Type="varchar" MaxLength="50" />
+          <Property Name="typ_obory2" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Logi">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_uzytkownik" Type="nvarchar" MaxLength="128" />
+          <Property Name="co_zrobil" Type="varchar(max)" />
+          <Property Name="czas" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="ServiceGuard">
+          <Key>
+            <PropertyRef Name="serial_number" />
+          </Key>
+          <Property Name="serial_number" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="nr_karty" Type="varchar" MaxLength="14" />
+          <Property Name="pin" Type="int" />
+          <Property Name="nr_tel" Type="varchar" MaxLength="13" />
+          <Property Name="lokalizacja" Type="varchar" MaxLength="8" />
+          <Property Name="przedzial_serwisowy" Type="varchar" MaxLength="5" />
+          <Property Name="do_serwisu" Type="int" />
+          <Property Name="ostatni_serwis" Type="datetime2" Precision="7" />
+          <Property Name="ostatni_alarm" Type="datetime2" Precision="7" />
+          <Property Name="licznik_sms" Type="int" />
+          <Property Name="ServiceManager_id_sm" Type="int" />
+          <Property Name="user_id_u" Type="varchar" MaxLength="50" />
+          <Property Name="jezyk" Type="varchar" MaxLength="5" />
+          <Property Name="firma" Type="varchar" MaxLength="50" />
+          <Property Name="nrSuperVisor" Type="varchar" MaxLength="12" />
+          <Property Name="nrServiceCenter" Type="varchar" MaxLength="12" />
+          <Property Name="przedzial_serwisowy_temp" Type="varchar" MaxLength="5" />
+          <Property Name="serial_number_temp" Type="varchar" MaxLength="8" />
+          <Property Name="pin_temp" Type="int" />
+          <Property Name="lokalizacja_temp" Type="varchar" MaxLength="8" />
+          <Property Name="do_serwisu_temp" Type="int" />
+          <Property Name="ostatni_serwis_temp" Type="datetime2" Precision="7" />
+          <Property Name="nrSuperVisor_temp" Type="varchar" MaxLength="12" />
+          <Property Name="nrServiceCenter_temp" Type="varchar" MaxLength="12" />
+          <Property Name="ostatni_alarm_temp" Type="datetime2" Precision="7" />
+          <Property Name="jezyk_temp" Type="varchar" MaxLength="5" />
+          <Property Name="aktualny_czas" Type="int" />
+          <Property Name="aktualny_czas_temp" Type="int" />
+        </EntityType>
+        <EntityType Name="ServiceManager">
+          <Key>
+            <PropertyRef Name="Id_sm" />
+          </Key>
+          <Property Name="Id_sm" Type="int" Nullable="false" />
+          <Property Name="nr_tel" Type="varchar" MaxLength="15" />
+          <Property Name="serial" Type="varchar" MaxLength="8" />
+          <Property Name="desc" Type="varchar" MaxLength="50" />
+          <Property Name="nr_tel_temp" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="SMS">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="tresc_sms" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Users_SG">
+          <Key>
+            <PropertyRef Name="User_id" />
+            <PropertyRef Name="ServiceGuard_id" />
+          </Key>
+          <Property Name="User_id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ServiceGuard_id" Type="varchar" MaxLength="8" Nullable="false" />
+        </EntityType>
+        <Association Name="FKAlarmyToServiceGuard">
+          <End Role="ServiceGuard" Type="Self.ServiceGuard" Multiplicity="0..1" />
+          <End Role="Alarmy" Type="Self.Alarmy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceGuard">
+              <PropertyRef Name="serial_number" />
+            </Principal>
+            <Dependent Role="Alarmy">
+              <PropertyRef Name="ServiceGuard_id_sg" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKBilingTOServiceGuard">
+          <End Role="ServiceGuard" Type="Self.ServiceGuard" Multiplicity="0..1" />
+          <End Role="Biling" Type="Self.Biling" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceGuard">
+              <PropertyRef Name="serial_number" />
+            </Principal>
+            <Dependent Role="Biling">
+              <PropertyRef Name="ServiceGuard_id_sg" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKKlientToServiceGuard">
+          <End Role="ServiceGuard" Type="Self.ServiceGuard" Multiplicity="0..1" />
+          <End Role="Klient" Type="Self.Klient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceGuard">
+              <PropertyRef Name="serial_number" />
+            </Principal>
+            <Dependent Role="Klient">
+              <PropertyRef Name="Id_k_SG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKServiceGuardToServiceManager">
+          <End Role="ServiceManager" Type="Self.ServiceManager" Multiplicity="0..1" />
+          <End Role="ServiceGuard" Type="Self.ServiceGuard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceManager">
+              <PropertyRef Name="Id_sm" />
+            </Principal>
+            <Dependent Role="ServiceGuard">
+              <PropertyRef Name="ServiceManager_id_sm" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKServiceGuardToUsers">
+          <End Role="ServiceGuard" Type="Self.ServiceGuard" Multiplicity="1" />
+          <End Role="Users_SG" Type="Self.Users_SG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceGuard">
+              <PropertyRef Name="serial_number" />
+            </Principal>
+            <Dependent Role="Users_SG">
+              <PropertyRef Name="ServiceGuard_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKUsersToServiceGuard">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="Users_SG" Type="Self.Users_SG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users_SG">
+              <PropertyRef Name="User_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ThunderITForGEAStoreContainer">
+          <EntitySet Name="Alarmy" EntityType="Self.Alarmy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Biling" EntityType="Self.Biling" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Klient" EntityType="Self.Klient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Logi" EntityType="Self.Logi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServiceGuard" EntityType="Self.ServiceGuard" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServiceManager" EntityType="Self.ServiceManager" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SMS" EntityType="Self.SMS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users_SG" EntityType="Self.Users_SG" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FKAlarmyToServiceGuard" Association="Self.FKAlarmyToServiceGuard">
+            <End Role="ServiceGuard" EntitySet="ServiceGuard" />
+            <End Role="Alarmy" EntitySet="Alarmy" />
+          </AssociationSet>
+          <AssociationSet Name="FKBilingTOServiceGuard" Association="Self.FKBilingTOServiceGuard">
+            <End Role="ServiceGuard" EntitySet="ServiceGuard" />
+            <End Role="Biling" EntitySet="Biling" />
+          </AssociationSet>
+          <AssociationSet Name="FKKlientToServiceGuard" Association="Self.FKKlientToServiceGuard">
+            <End Role="ServiceGuard" EntitySet="ServiceGuard" />
+            <End Role="Klient" EntitySet="Klient" />
+          </AssociationSet>
+          <AssociationSet Name="FKServiceGuardToServiceManager" Association="Self.FKServiceGuardToServiceManager">
+            <End Role="ServiceManager" EntitySet="ServiceManager" />
+            <End Role="ServiceGuard" EntitySet="ServiceGuard" />
+          </AssociationSet>
+          <AssociationSet Name="FKServiceGuardToUsers" Association="Self.FKServiceGuardToUsers">
+            <End Role="ServiceGuard" EntitySet="ServiceGuard" />
+            <End Role="Users_SG" EntitySet="Users_SG" />
+          </AssociationSet>
+          <AssociationSet Name="FKUsersToServiceGuard" Association="Self.FKUsersToServiceGuard">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Users_SG" EntitySet="Users_SG" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ThunderITForGEA" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Alarmy" EntityType="ThunderITForGEA.Alarmy" />
+          <EntitySet Name="AspNetRoles" EntityType="ThunderITForGEA.AspNetRoles" />
+          <EntitySet Name="AspNetUsers" EntityType="ThunderITForGEA.AspNetUsers" />
+          <EntitySet Name="Biling" EntityType="ThunderITForGEA.Biling" />
+          <EntitySet Name="Klient" EntityType="ThunderITForGEA.Klient" />
+          <EntitySet Name="ServiceGuard" EntityType="ThunderITForGEA.ServiceGuard" />
+          <EntitySet Name="ServiceManager" EntityType="ThunderITForGEA.ServiceManager" />
+          <AssociationSet Name="FKAlarmyToServiceGuard" Association="ThunderITForGEA.FKAlarmyToServiceGuard">
+            <End Role="ServiceGuard" EntitySet="ServiceGuard" />
+            <End Role="Alarmy" EntitySet="Alarmy" />
+          </AssociationSet>
+          <AssociationSet Name="FKBilingTOServiceGuard" Association="ThunderITForGEA.FKBilingTOServiceGuard">
+            <End Role="ServiceGuard" EntitySet="ServiceGuard" />
+            <End Role="Biling" EntitySet="Biling" />
+          </AssociationSet>
+          <AssociationSet Name="FKKlientToServiceGuard" Association="ThunderITForGEA.FKKlientToServiceGuard">
+            <End Role="ServiceGuard" EntitySet="ServiceGuard" />
+            <End Role="Klient" EntitySet="Klient" />
+          </AssociationSet>
+          <AssociationSet Name="FKServiceGuardToServiceManager" Association="ThunderITForGEA.FKServiceGuardToServiceManager">
+            <End Role="ServiceManager" EntitySet="ServiceManager" />
+            <End Role="ServiceGuard" EntitySet="ServiceGuard" />
+          </AssociationSet>
+          <AssociationSet Name="Users_SG" Association="ThunderITForGEA.Users_SG">
+            <End Role="ServiceGuard" EntitySet="ServiceGuard" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <EntitySet Name="Logi" EntityType="ThunderITForGEA.Logi" />
+          <EntitySet Name="SMS" EntityType="ThunderITForGEA.SMS" />
+        </EntityContainer>
+        <EntityType Name="Alarmy">
+          <Key>
+            <PropertyRef Name="Id_a" />
+          </Key>
+          <Property Name="Id_a" Type="Int32" Nullable="false" />
+          <Property Name="data_alarmu" Type="DateTime" Precision="0" />
+          <Property Name="typ_alarmu" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="wykonal" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="ServiceGuard_id_sg" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="data_wykonania" Type="DateTime" Precision="0" />
+          <Property Name="serial_number" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ServiceGuard" Relationship="ThunderITForGEA.FKAlarmyToServiceGuard" FromRole="Alarmy" ToRole="ServiceGuard" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="login" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="imie" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="nazwisko" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="firma" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="adres" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="miasto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="kraj" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="telefon" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ServiceGuard" Relationship="ThunderITForGEA.Users_SG" FromRole="AspNetUsers" ToRole="ServiceGuard" />
+        </EntityType>
+        <EntityType Name="Biling">
+          <Key>
+            <PropertyRef Name="Id_b" />
+          </Key>
+          <Property Name="Id_b" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="data" Type="DateTime" Precision="7" />
+          <Property Name="tresc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="login" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ServiceGuard_id_sg" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ServiceGuard" Relationship="ThunderITForGEA.FKBilingTOServiceGuard" FromRole="Biling" ToRole="ServiceGuard" />
+        </EntityType>
+        <EntityType Name="Klient">
+          <Key>
+            <PropertyRef Name="Id_k" />
+          </Key>
+          <Property Name="Id_k" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="imie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="nazwisko" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="firma" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="adres" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="miasto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="kraj" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="telefon" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Id_k_SG" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="ilosc_krow" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="udoj_per_day" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="wydajnosc_stada" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="manager_fs" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="techniczny" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="manager_sprzedazy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="typ_obory" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="obora_dlugosc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="obora_szerokosc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="obora_rokbudowy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="rodzaj_sciolki" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="typ_obory2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ServiceGuard" Relationship="ThunderITForGEA.FKKlientToServiceGuard" FromRole="Klient" ToRole="ServiceGuard" />
+        </EntityType>
+        <EntityType Name="ServiceGuard">
+          <Key>
+            <PropertyRef Name="serial_number" />
+          </Key>
+          <Property Name="serial_number" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="nr_karty" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+          <Property Name="pin" Type="Int32" />
+          <Property Name="nr_tel" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="lokalizacja" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="przedzial_serwisowy" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="do_serwisu" Type="Int32" />
+          <Property Name="ostatni_serwis" Type="DateTime" Precision="7" />
+          <Property Name="ostatni_alarm" Type="DateTime" Precision="7" />
+          <Property Name="licznik_sms" Type="Int32" />
+          <Property Name="ServiceManager_id_sm" Type="Int32" />
+          <Property Name="user_id_u" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="jezyk" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="firma" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="nrSuperVisor" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="nrServiceCenter" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="przedzial_serwisowy_temp" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="serial_number_temp" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="pin_temp" Type="Int32" />
+          <Property Name="lokalizacja_temp" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="do_serwisu_temp" Type="Int32" />
+          <Property Name="ostatni_serwis_temp" Type="DateTime" Precision="7" />
+          <Property Name="nrSuperVisor_temp" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="nrServiceCenter_temp" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="ostatni_alarm_temp" Type="DateTime" Precision="7" />
+          <Property Name="jezyk_temp" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="aktualny_czas" Type="Int32" />
+          <Property Name="aktualny_czas_temp" Type="Int32" />
+          <NavigationProperty Name="Alarmy" Relationship="ThunderITForGEA.FKAlarmyToServiceGuard" FromRole="ServiceGuard" ToRole="Alarmy" />
+          <NavigationProperty Name="Biling" Relationship="ThunderITForGEA.FKBilingTOServiceGuard" FromRole="ServiceGuard" ToRole="Biling" />
+          <NavigationProperty Name="Klient" Relationship="ThunderITForGEA.FKKlientToServiceGuard" FromRole="ServiceGuard" ToRole="Klient" />
+          <NavigationProperty Name="ServiceManager" Relationship="ThunderITForGEA.FKServiceGuardToServiceManager" FromRole="ServiceGuard" ToRole="ServiceManager" />
+          <NavigationProperty Name="AspNetUsers" Relationship="ThunderITForGEA.Users_SG" FromRole="ServiceGuard" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="ServiceManager">
+          <Key>
+            <PropertyRef Name="Id_sm" />
+          </Key>
+          <Property Name="Id_sm" Type="Int32" Nullable="false" />
+          <Property Name="nr_tel" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="serial" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="desc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="nr_tel_temp" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ServiceGuard" Relationship="ThunderITForGEA.FKServiceGuardToServiceManager" FromRole="ServiceManager" ToRole="ServiceGuard" />
+        </EntityType>
+        <Association Name="FKAlarmyToServiceGuard">
+          <End Type="ThunderITForGEA.ServiceGuard" Role="ServiceGuard" Multiplicity="0..1" />
+          <End Type="ThunderITForGEA.Alarmy" Role="Alarmy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceGuard">
+              <PropertyRef Name="serial_number" />
+            </Principal>
+            <Dependent Role="Alarmy">
+              <PropertyRef Name="ServiceGuard_id_sg" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKBilingTOServiceGuard">
+          <End Type="ThunderITForGEA.ServiceGuard" Role="ServiceGuard" Multiplicity="0..1" />
+          <End Type="ThunderITForGEA.Biling" Role="Biling" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceGuard">
+              <PropertyRef Name="serial_number" />
+            </Principal>
+            <Dependent Role="Biling">
+              <PropertyRef Name="ServiceGuard_id_sg" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKKlientToServiceGuard">
+          <End Type="ThunderITForGEA.ServiceGuard" Role="ServiceGuard" Multiplicity="0..1" />
+          <End Type="ThunderITForGEA.Klient" Role="Klient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceGuard">
+              <PropertyRef Name="serial_number" />
+            </Principal>
+            <Dependent Role="Klient">
+              <PropertyRef Name="Id_k_SG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKServiceGuardToServiceManager">
+          <End Type="ThunderITForGEA.ServiceManager" Role="ServiceManager" Multiplicity="0..1" />
+          <End Type="ThunderITForGEA.ServiceGuard" Role="ServiceGuard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceManager">
+              <PropertyRef Name="Id_sm" />
+            </Principal>
+            <Dependent Role="ServiceGuard">
+              <PropertyRef Name="ServiceManager_id_sm" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Users_SG">
+          <End Type="ThunderITForGEA.ServiceGuard" Role="ServiceGuard" Multiplicity="*" />
+          <End Type="ThunderITForGEA.AspNetUsers" Role="AspNetUsers" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Logi">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="id_uzytkownik" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="co_zrobil" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="czas" Type="DateTime" Precision="7" />
+        </EntityType>
+        <EntityType Name="SMS">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="tresc_sms" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ThunderITForGEAStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="Alarmy">
+            <EntityTypeMapping TypeName="ThunderITForGEA.Alarmy">
+              <MappingFragment StoreEntitySet="Alarmy">
+                <ScalarProperty Name="serial_number" ColumnName="serial_number" />
+                <ScalarProperty Name="data_wykonania" ColumnName="data_wykonania" />
+                <ScalarProperty Name="ServiceGuard_id_sg" ColumnName="ServiceGuard_id_sg" />
+                <ScalarProperty Name="wykonal" ColumnName="wykonal" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="typ_alarmu" ColumnName="typ_alarmu" />
+                <ScalarProperty Name="data_alarmu" ColumnName="data_alarmu" />
+                <ScalarProperty Name="Id_a" ColumnName="Id_a" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="ThunderITForGEA.AspNetRoles">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="ThunderITForGEA.AspNetUsers">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="telefon" ColumnName="telefon" />
+                <ScalarProperty Name="kraj" ColumnName="kraj" />
+                <ScalarProperty Name="miasto" ColumnName="miasto" />
+                <ScalarProperty Name="adres" ColumnName="adres" />
+                <ScalarProperty Name="firma" ColumnName="firma" />
+                <ScalarProperty Name="nazwisko" ColumnName="nazwisko" />
+                <ScalarProperty Name="imie" ColumnName="imie" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Biling">
+            <EntityTypeMapping TypeName="ThunderITForGEA.Biling">
+              <MappingFragment StoreEntitySet="Biling">
+                <ScalarProperty Name="ServiceGuard_id_sg" ColumnName="ServiceGuard_id_sg" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="tresc" ColumnName="tresc" />
+                <ScalarProperty Name="data" ColumnName="data" />
+                <ScalarProperty Name="Id_b" ColumnName="Id_b" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Klient">
+            <EntityTypeMapping TypeName="ThunderITForGEA.Klient">
+              <MappingFragment StoreEntitySet="Klient">
+                <ScalarProperty Name="typ_obory2" ColumnName="typ_obory2" />
+                <ScalarProperty Name="rodzaj_sciolki" ColumnName="rodzaj_sciolki" />
+                <ScalarProperty Name="obora_rokbudowy" ColumnName="obora_rokbudowy" />
+                <ScalarProperty Name="obora_szerokosc" ColumnName="obora_szerokosc" />
+                <ScalarProperty Name="obora_dlugosc" ColumnName="obora_dlugosc" />
+                <ScalarProperty Name="typ_obory" ColumnName="typ_obory" />
+                <ScalarProperty Name="manager_sprzedazy" ColumnName="manager_sprzedazy" />
+                <ScalarProperty Name="techniczny" ColumnName="techniczny" />
+                <ScalarProperty Name="manager_fs" ColumnName="manager_fs" />
+                <ScalarProperty Name="wydajnosc_stada" ColumnName="wydajnosc_stada" />
+                <ScalarProperty Name="udoj_per_day" ColumnName="udoj_per_day" />
+                <ScalarProperty Name="ilosc_krow" ColumnName="ilosc_krow" />
+                <ScalarProperty Name="Id_k_SG" ColumnName="Id_k_SG" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="telefon" ColumnName="telefon" />
+                <ScalarProperty Name="kraj" ColumnName="kraj" />
+                <ScalarProperty Name="miasto" ColumnName="miasto" />
+                <ScalarProperty Name="adres" ColumnName="adres" />
+                <ScalarProperty Name="firma" ColumnName="firma" />
+                <ScalarProperty Name="nazwisko" ColumnName="nazwisko" />
+                <ScalarProperty Name="imie" ColumnName="imie" />
+                <ScalarProperty Name="Id_k" ColumnName="Id_k" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServiceGuard">
+            <EntityTypeMapping TypeName="ThunderITForGEA.ServiceGuard">
+              <MappingFragment StoreEntitySet="ServiceGuard">
+                <ScalarProperty Name="aktualny_czas_temp" ColumnName="aktualny_czas_temp" />
+                <ScalarProperty Name="aktualny_czas" ColumnName="aktualny_czas" />
+                <ScalarProperty Name="jezyk_temp" ColumnName="jezyk_temp" />
+                <ScalarProperty Name="ostatni_alarm_temp" ColumnName="ostatni_alarm_temp" />
+                <ScalarProperty Name="nrServiceCenter_temp" ColumnName="nrServiceCenter_temp" />
+                <ScalarProperty Name="nrSuperVisor_temp" ColumnName="nrSuperVisor_temp" />
+                <ScalarProperty Name="ostatni_serwis_temp" ColumnName="ostatni_serwis_temp" />
+                <ScalarProperty Name="do_serwisu_temp" ColumnName="do_serwisu_temp" />
+                <ScalarProperty Name="lokalizacja_temp" ColumnName="lokalizacja_temp" />
+                <ScalarProperty Name="pin_temp" ColumnName="pin_temp" />
+                <ScalarProperty Name="serial_number_temp" ColumnName="serial_number_temp" />
+                <ScalarProperty Name="przedzial_serwisowy_temp" ColumnName="przedzial_serwisowy_temp" />
+                <ScalarProperty Name="nrServiceCenter" ColumnName="nrServiceCenter" />
+                <ScalarProperty Name="nrSuperVisor" ColumnName="nrSuperVisor" />
+                <ScalarProperty Name="firma" ColumnName="firma" />
+                <ScalarProperty Name="jezyk" ColumnName="jezyk" />
+                <ScalarProperty Name="user_id_u" ColumnName="user_id_u" />
+                <ScalarProperty Name="ServiceManager_id_sm" ColumnName="ServiceManager_id_sm" />
+                <ScalarProperty Name="licznik_sms" ColumnName="licznik_sms" />
+                <ScalarProperty Name="ostatni_alarm" ColumnName="ostatni_alarm" />
+                <ScalarProperty Name="ostatni_serwis" ColumnName="ostatni_serwis" />
+                <ScalarProperty Name="do_serwisu" ColumnName="do_serwisu" />
+                <ScalarProperty Name="przedzial_serwisowy" ColumnName="przedzial_serwisowy" />
+                <ScalarProperty Name="lokalizacja" ColumnName="lokalizacja" />
+                <ScalarProperty Name="nr_tel" ColumnName="nr_tel" />
+                <ScalarProperty Name="pin" ColumnName="pin" />
+                <ScalarProperty Name="nr_karty" ColumnName="nr_karty" />
+                <ScalarProperty Name="serial_number" ColumnName="serial_number" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServiceManager">
+            <EntityTypeMapping TypeName="ThunderITForGEA.ServiceManager">
+              <MappingFragment StoreEntitySet="ServiceManager">
+                <ScalarProperty Name="nr_tel_temp" ColumnName="nr_tel_temp" />
+                <ScalarProperty Name="desc" ColumnName="desc" />
+                <ScalarProperty Name="serial" ColumnName="serial" />
+                <ScalarProperty Name="nr_tel" ColumnName="nr_tel" />
+                <ScalarProperty Name="Id_sm" ColumnName="Id_sm" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Users_SG" TypeName="ThunderITForGEA.Users_SG" StoreEntitySet="Users_SG">
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="User_id" />
+            </EndProperty>
+            <EndProperty Name="ServiceGuard">
+              <ScalarProperty Name="serial_number" ColumnName="ServiceGuard_id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="Logi">
+            <EntityTypeMapping TypeName="ThunderITForGEA.Logi">
+              <MappingFragment StoreEntitySet="Logi">
+                <ScalarProperty Name="czas" ColumnName="czas" />
+                <ScalarProperty Name="co_zrobil" ColumnName="co_zrobil" />
+                <ScalarProperty Name="id_uzytkownik" ColumnName="id_uzytkownik" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SMS">
+            <EntityTypeMapping TypeName="ThunderITForGEA.SMS">
+              <MappingFragment StoreEntitySet="SMS">
+                <ScalarProperty Name="tresc_sms" ColumnName="tresc_sms" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

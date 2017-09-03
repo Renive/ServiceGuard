@@ -1,0 +1,98 @@
+﻿@model ThunderITforGEA.Models.User_additional
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>User_additional</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.numer_serial)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.numer_serial)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ostatni_serwis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ostatni_serwis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.data_ostatniego_serwisu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.data_ostatniego_serwisu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nr_tel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nr_tel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nr_lac)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nr_lac)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.czas_pracy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.czas_pracy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nr_cid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nr_cid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.godziny_serwisowe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.godziny_serwisowe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nr_gea)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nr_gea)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AspNetUser.PasswordHash)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AspNetUser.PasswordHash)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id_ua }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

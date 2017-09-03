@@ -1,0 +1,51 @@
+﻿@model ThunderITforGEA.Models.ServiceGuard
+@{
+    ViewBag.Title = "Home Page";
+   
+}
+<br>
+    <p>Wyślij dowolny SMS</p>
+  @using (Html.BeginForm("wyslijDowolnySMS", "SerialPort"))
+  {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+   
+    <p>
+        Wpisz numer telefonu : @Html.TextBox("nrTel")
+    </p>
+    <p>
+        Wpisz treść : @Html.TextBox("tresc")
+    </p>
+    
+
+    <input type="submit" value="Wyślij" />
+  }
+
+@using (Html.BeginForm("ustawTimer", "SerialPort"))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <p>
+        Wpisz interwał do aktualizacji ServiceGuard : @Html.TextBox("interwal")
+    </p>
+    <input type="submit" value="Ustaw" />
+}
+
+<br>
+@Html.ActionLink("Przejrzyj bilingi", "Index", "Bilings", null, new { @class = "btn btn-default" })
+@Html.ActionLink("Przejrzyj logi", "Index", "Logis", null, new { @class = "btn btn-default" })
+@Html.ActionLink("Zarządzaj uprawnieniami", "ManageUserRoles", "Roles", null, new { @class = "btn btn-default" })
+@Html.ActionLink("Dodaj klienta", "Create", "Klient", null, new { @class = "btn btn-default" })
+@Html.ActionLink("Dodaj ServiceGuarda", "Create", "ServiceGuards", null, new { @class = "btn btn-default" })
+@Html.ActionLink("Zarządzaj ServiceGuard", "Index", "ServiceGuards", null, new { @class = "btn btn-default" })
+@Html.ActionLink("Rejestracja nowego użytkownika", "Register", "Account", null, new { @class = "btn btn-default" })
+
+
+<hr>
+   
+<script>
+function odswiezStrone() {
+    location.reload(true);
+}
+</script>

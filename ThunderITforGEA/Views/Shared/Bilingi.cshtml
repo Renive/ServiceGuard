@@ -1,0 +1,73 @@
+﻿@model IEnumerable<ThunderITforGEA.Models.Biling>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.serial_number)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.imieNazwisko)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tresc)
+        </th>
+    </tr>
+  
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.serial_number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.serial_number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.do_serwisu)
+            </td>
+          
+        </tr>
+      
+    }
+
+</table>
+<script>
+    function przepiszSerialNumber(id) {
+        document.getElementById("serialNumberSG").value = id;
+        var url = '@Url.Action("doPaneluDealera", "Home")';
+        var data = { serialNumberSG: id };
+        $.post(url, data);
+        document.getElementById("guzikDalej").submit();
+        $("form").submit();
+    }
+    /* function sprawdzSerial() {
+        // var index;
+         var wpisanySerial = document.getElementById("serialNumberSG").value;
+         for (var index = 0; index < odel.dozwoloneSeriale.Count(); ++index)
+         {
+            // index = 0;
+             if(wpisanyserial==Model.dozwoloneSeriale.IndexOf(index))
+             {
+              //  index += 0);
+             }
+         }
+                             }
+    */
+  /*  function sprawdzSerial() {
+         Model.dozwoloneSeriale.Count();
+         Model.dozwoloneSeriale;
+        var wpisanySerial = document.getElementById("serialNumberSG").value;
+        for (var index = 0; index < ilosc ; ++index) {
+            // index = 0;
+            if (wpisanyserial ==lista.valueOf(index)) {
+                alert("kurwa");
+                //  index += 0);
+            }
+        }
+    }*/
+</script>

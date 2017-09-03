@@ -1,0 +1,173 @@
+﻿@model IEnumerable<ThunderITforGEA.Models.ServiceGuard>
+@{
+    ViewBag.Title = "Index";
+}
+Scripts.Render("~/bundles/jquery")
+
+<script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")" type="text/javascript"></script> 
+<h2>Dane dla @ViewBag.serialNumber</h2>
+<table class="table">
+    <tr>      
+        <th>
+           Imię i nazwisko
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().do_serwisu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.firma)
+        </th>
+    </tr>
+
+ 
+
+    @{int i = 0;}
+    @foreach (var item in Model)
+    {
+        <tr>         
+            <td>
+                @Html.DisplayFor(modelItem => item.Klient.FirstOrDefault().imie) @Html.DisplayFor(modelItem => item.Klient.FirstOrDefault().nazwisko)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.do_serwisu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.firma)
+            </td>
+           
+            <td>
+               @Ajax.ActionLink(
+        "Aktualizuj dane",
+        "aktualizujDane",
+        "SerialPort",
+        new
+        {
+            nrServiceGuard = @ViewBag.nrServiceGuard
+        },
+        new AjaxOptions
+        {
+            HttpMethod = "POST",
+            OnSuccess = "komunikat"
+        }
+    ) |
+               @Ajax.ActionLink(
+        "Zrób serwis",
+        "zrobSerwis",
+        "SerialPort",
+        new
+        {
+            nrServiceGuard = @ViewBag.nrServiceGuard
+        },
+        new AjaxOptions
+        {
+            HttpMethod = "POST",
+            OnSuccess = "komunikat"
+        }
+    ) |
+              @Ajax.ActionLink(
+        "Zmień przedział czasu",
+        "zmienPrzedzialCzasu",
+        "SerialPort",
+        new
+        {
+            nrServiceGuard = @ViewBag.nrServiceGuard
+        },
+        new AjaxOptions
+        {
+            HttpMethod = "POST",
+            OnSuccess = "komunikat"
+        }
+    ) |
+              @Ajax.ActionLink(
+        "Zmień czas total",
+        "zmienCzasTotal",
+        "SerialPort",
+        new
+        {
+            nrServiceGuard = @ViewBag.nrServiceGuard
+        },
+        new AjaxOptions
+        {
+            HttpMethod = "POST",
+            OnSuccess = "komunikat"
+        }
+    ) |
+               @Ajax.ActionLink(
+        "Zmień język",
+        "zmienJezyk",
+        "SerialPort",
+        new
+        {
+            nrServiceGuard = @ViewBag.nrServiceGuard
+        },
+        new AjaxOptions
+        {
+            HttpMethod = "POST",
+            OnSuccess = "komunikat"
+        }
+    ) |
+              @Ajax.ActionLink(
+        "Zmień numer seryjny",
+        "zmienSerialNumber",
+        "SerialPort",
+        new
+        {
+            nrServiceGuard = @ViewBag.nrServiceGuard
+        },
+        new AjaxOptions
+        {
+            HttpMethod = "POST",
+            OnSuccess = "komunikat"
+        }
+    ) |
+              @Ajax.ActionLink(
+        "Zmień numer SuperVisor",
+        "zmienNumerSuperVisor",
+        "SerialPort",
+        new
+        {
+            nrServiceGuard = @ViewBag.nrServiceGuard
+        },
+        new AjaxOptions
+        {
+            HttpMethod = "POST",
+            OnSuccess = "komunikat"
+        }
+    ) |
+            </td>
+          
+        </tr>
+        i++;
+    }
+</table>
+<p>Twoje dane:</p>
+<div class="row">
+    <div class="col-md-6">
+     @*   @Html.DisplayNameFor(model => model.daneGEA.numer_serial)
+        @Html.DisplayFor(model => model.First().daneGEA.numer_serial)*@
+        <p>Serial number:</p>
+       
+    @*   @Html.DisplayNameFor(model => model.daneGEA.czas_pracy)
+        @Html.DisplayFor(model => model.First().daneGEA.czas_pracy) *@
+        <p>Czas pracy:</p>
+       
+
+    </div>
+    <div class="col-md-6">
+     @*   @Html.DisplayNameFor(model => model.daneGEA.godziny_serwisowe)
+        @Html.DisplayFor(model => model.First().daneGEA.godziny_serwisowe) *@
+        <p>Godziny serwisowe:</p>
+        
+     @**  @Html.DisplayNameFor(model => model.daneGEA.data_ostatniego_serwisu)
+        @Html.DisplayFor(model => model.First().daneGEA.data_ostatniego_serwisu) *@
+        <p>Data ostatniego serwisu:</p>
+    </div>
+
+</div>
+<script>
+    var komunikat = function (result) {
+
+
+        alert('Żądanie zostało wysłane!');
+    };
+</script>

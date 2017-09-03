@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ThunderITforGEA.Models.ServiceManager>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nr_tel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.serial)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.desc)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nr_tel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.serial)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.desc)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id_sm }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id_sm }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id_sm })
+        </td>
+    </tr>
+}
+
+</table>

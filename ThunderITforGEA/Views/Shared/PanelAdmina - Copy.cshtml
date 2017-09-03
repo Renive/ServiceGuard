@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ThunderITforGEA.Models.User_additional>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Panel Admina</h1>
+    <p class="lead">Zmień ServiceGuarda</p>
+    @Html.ActionLink("Aktualizuj dane", "Edit", "SerialPort", new { id = @ViewBag.User_Id }, new { @class = "btn btn-default" })
+    @Html.ActionLink("Zrób serwis", "Edit", "SerialPort", new { id = @ViewBag.User_Id }, new { @class = "btn btn-default" })
+    @Html.ActionLink("Zmień przedział czasu", "Edit", "SerialPort", new { id = @ViewBag.User_Id }, new { @class = "btn btn-default" })
+    @Html.ActionLink("Zmień czas total", "Edit", "SerialPort", new { id = @ViewBag.User_Id }, new { @class = "btn btn-default" })
+    @Html.ActionLink("Zmień język", "Edit", "SerialPort", new { id = @ViewBag.User_Id }, new { @class = "btn btn-default" })
+    @Html.ActionLink("Ustaw czas startowy", "Edit", "SerialPort", new { id = @ViewBag.User_Id }, new { @class = "btn btn-default" })
+    @Html.ActionLink("Zmień serial number", "Edit", "SerialPort", new { id = @ViewBag.User_Id }, new { @class = "btn btn-default" })
+    @Html.ActionLink("Zmień number SuperVisior", "Edit", "SerialPort", new { id = @ViewBag.User_Id }, new { @class = "btn btn-default" })
+    @Html.ActionLink("Zmień numer ServiceCenter", "Edit", "SerialPort", new { id = @ViewBag.User_Id }, new { @class = "btn btn-default" })
+    @Html.ActionLink("Zmień numer ServiceManager", "Edit", "SerialPort", new { id = @ViewBag.User_Id }, new { @class = "btn btn-default" })
+    @Html.ActionLink("Historia ServiceGuarda", "Edit", "SerialPort", new { id = @ViewBag.User_Id }, new { @class = "btn btn-default" })
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        @Html.DisplayNameFor(model => model.numer_serial)
+        <br>
+        @Html.DisplayNameFor(model => model.ostatni_serwis)
+        <br>
+        @Html.DisplayNameFor(model => model.data_ostatniego_serwisu)
+    </div>
+    <div class="col-md-4">
+        @Html.DisplayNameFor(model => model.nr_tel)
+        <br>
+        @Html.DisplayNameFor(model => model.nr_lac)
+        <br>
+        @Html.DisplayNameFor(model => model.czas_pracy)
+    </div>
+    <div class="col-md-4">
+        @Html.DisplayNameFor(model => model.nr_cid)
+        <br>
+        @Html.DisplayNameFor(model => model.godziny_serwisowe)
+        <br>
+        @Html.DisplayNameFor(model => model.nr_gea)
+    </div>
+
+</div>

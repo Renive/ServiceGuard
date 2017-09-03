@@ -1,0 +1,53 @@
+﻿@model ThunderITforGEA.Models.User_additional
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Panel Dealera</h1>
+    <p class="lead">Zmień ServiceGuarda</p>
+    @Html.ActionLink("Aktualizuj dane", "aktualizujDane", "SerialPort", new { nrServiceGuard = @ViewBag.nrServiceGuard }, new { @class = "btn btn-default" })
+    @Html.ActionLink("Zrób serwis", "zrobSerwis", "SerialPort", new { nrServiceGuard = @ViewBag.nrServiceGuard }, new { @class = "btn btn-default" })
+    @Html.ActionLink("Zmień przedział czasu", "zmienPrzedzialCzasu", "SerialPort", new { nrServiceGuard = @ViewBag.nrServiceGuard }, new { @class = "btn btn-default" })
+    @Html.ActionLink("Zmień czas total", "zmienCzasTotal", "SerialPort", new { nrServiceGuard = @ViewBag.nrServiceGuard }, new { @class = "btn btn-default" })
+    @Html.ActionLink("Zmień język", "zmienJezyk", "SerialPort", new { nrServiceGuard = @ViewBag.nrServiceGuard }, new { @class = "btn btn-default" })
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        @Html.DisplayNameFor(model => model.numer_serial) 
+        @Html.DisplayFor(model => model.numer_serial)
+        <br>
+        @Html.DisplayNameFor(model => model.czas_pracy) 
+        @Html.DisplayFor(model => model.czas_pracy)
+        <br>
+
+    </div>
+    <div class="col-md-6">
+        @Html.DisplayNameFor(model => model.godziny_serwisowe) 
+        @Html.DisplayFor(model => model.godziny_serwisowe)
+        <br>
+        @Html.DisplayNameFor(model => model.data_ostatniego_serwisu) 
+        @Html.DisplayFor(model => model.data_ostatniego_serwisu)
+    </div>
+
+</div>
+<div id="divLoading" style="margin: 0px; padding: 0px; position: fixed; right: 0px;
+    top: 0px; width: 100%; height: 100%; background-color: #666666; z-index: 30001;
+    opacity: .8; filter: alpha(opacity=70);display:none">
+    <p style="position: absolute; top: 30%; left: 45%; color: White;">
+        Oczekiwanie na dane...<img src="../../Content/ajax-loading.gif">
+    </p>
+</div>
+<button class="btn btn-default" onclick="wyslijSMS();">Wyslij sms</button>
+<script type="text/javascript" language="javascript">
+    function wyslijSMS() {
+        var url = '@Url.Action("Test", "SerialPort")';
+        $("#divLoading").show();
+        $.post(url, null,
+                function (danePrzychodzace) {
+                   
+                    $("#divLoading").hide();
+                });
+    }
+</script>

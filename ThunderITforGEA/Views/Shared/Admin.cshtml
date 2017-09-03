@@ -1,0 +1,92 @@
+﻿@model ThunderITforGEA.Models.AdminAndDataViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Dane dla @ViewBag.serialNumber</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.pracownik.serialNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pracownik.imieNazwisko)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pracownik.ileDoSerwisu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pracownik.firmaDealera)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pracownik.pracownikGea)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pracownik.grupa)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.pracownik.serialNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pracownik.imieNazwisko)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pracownik.ileDoSerwisu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pracownik.firmaDealera)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pracownik.pracownikGea)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pracownik.grupa)
+            </td>
+            <td>
+                @Html.ActionLink("Aktualizuj dane", "aktualizujDane", "SerialPort", new { nrServiceGuard = @ViewBag.nrServiceGuard }) |
+                @Html.ActionLink("Zrób serwis", "zrobSerwis", "SerialPort", new { nrServiceGuard = @ViewBag.nrServiceGuard })|
+                @Html.ActionLink("Zmień przedział czasu", "zmienPrzedzialCzasu", "SerialPort", new { nrServiceGuard = @ViewBag.nrServiceGuard }) |
+                @Html.ActionLink("Zmień czas total", "zmienCzasTotal", "SerialPort", new { nrServiceGuard = @ViewBag.nrServiceGuard }) |
+                @Html.ActionLink("Zmień język", "zmienJezyk", "SerialPort", new { nrServiceGuard = @ViewBag.nrServiceGuard }) |
+                @Html.ActionLink("Zmień serial number", "zmienSerialNumber", "SerialPort", new { nrServiceGuard = @ViewBag.nrServiceGuard }) |
+                @Html.ActionLink("Zmień numer SuperVisor", "zmienNumerSuperVisor", "SerialPort", new { nrServiceGuard = @ViewBag.nrServiceGuard })
+                @Html.ActionLink("Zmień numer ServiceCenter", "zmienNumerServiceCenter", "SerialPort", new { nrServiceGuard = @ViewBag.nrServiceGuard }) |
+                @Html.ActionLink("Zmień numer ServiceManager", "zmienNumerServiceManager", "SerialPort", new { nrServiceGuard = @ViewBag.nrServiceGuard })
+            </td>
+        </tr>
+    }
+
+</table>
+<p>Twoje dane:</p>
+<div class="row">
+    <div class="col-md-6">
+        @Html.DisplayNameFor(model => model.daneAdmina.numer_serial)
+        @Html.DisplayFor(model => model.First().daneAdmina.numer_serial)
+
+        <br>
+        @Html.DisplayNameFor(model => model.daneAdmina.czas_pracy)
+        @Html.DisplayFor(model => model.First().daneAdmina.czas_pracy)
+        <br>
+
+    </div>
+    <div class="col-md-6">
+        @Html.DisplayNameFor(model => model.daneAdmina.godziny_serwisowe)
+        @Html.DisplayFor(model => model.First().daneAdmina.godziny_serwisowe)
+        <br>
+        @Html.DisplayNameFor(model => model.daneAdmina.data_ostatniego_serwisu)
+        @Html.DisplayFor(model => model.First().daneAdmina.data_ostatniego_serwisu)
+    </div>
+
+</div>
+@Html.ActionLink("Przejdź do panelu administracyjnego", "doPaneluAdmina2", "Home", null, new { @class = "btn btn-default" })
+<script>
+function odswiezStrone() {
+    location.reload(true);
+}
+</script>

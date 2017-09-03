@@ -1,0 +1,153 @@
+﻿@model IEnumerable<ThunderITforGEA.Models.Klient>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.imie)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nazwisko)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.firma)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.adres)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.miasto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.kraj)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.telefon)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ilosc_krow)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.udoj_per_day)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.wydajnosc_stada)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.manager_fs)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.techniczny)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.manager_sprzedazy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.typ_obory)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.obora_dlugosc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.obora_szerokosc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.obora_rokbudowy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.rodzaj_sciolki)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.typ_obory2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ServiceGuard.nr_karty)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.imie)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nazwisko)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.firma)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.adres)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.miasto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.kraj)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.telefon)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ilosc_krow)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.udoj_per_day)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.wydajnosc_stada)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.manager_fs)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.techniczny)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.manager_sprzedazy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.typ_obory)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.obora_dlugosc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.obora_szerokosc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.obora_rokbudowy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rodzaj_sciolki)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.typ_obory2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ServiceGuard.nr_karty)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id_k }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id_k }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id_k })
+        </td>
+    </tr>
+}
+
+</table>

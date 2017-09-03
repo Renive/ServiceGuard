@@ -1,0 +1,50 @@
+﻿@model ThunderITforGEA.Models.Biling
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Biling</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.data)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.data)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tresc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tresc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.login)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.login)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ServiceGuard.nr_karty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServiceGuard.nr_karty)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id_b }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

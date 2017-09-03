@@ -1,0 +1,74 @@
+﻿@model ThunderITforGEA.Models.Alarmy
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Alarmy</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.data_alarmu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.data_alarmu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.typ_alarmu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.typ_alarmu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.wykonal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.wykonal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.data_wykonania)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.data_wykonania)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.serial_number)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.serial_number)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ServiceGuard.nr_karty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServiceGuard.nr_karty)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id_a }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
