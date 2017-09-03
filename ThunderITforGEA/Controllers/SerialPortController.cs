@@ -45,7 +45,6 @@ namespace ThunderITforGEA.Controllers
             czytanieSMS.Elapsed += czytanieSMS_Elapsed;
             port.WriteTimeout = 2000;
             port.ReadTimeout = 2000;
-           
             Task.Delay(200); //niech ma czas na otwarcie
             port.WriteLine("AT+CMGF=1\r\n");  //ustawianie trybu wiadomości przy pierwszym odpaleniu sesji użytkownika
             port.WriteLine("AT\\Q3\r\n");  //ustaw flow control na 3 czyli hardware rts cts, 0 wylacz, 1 software xon
@@ -182,7 +181,6 @@ Obsługiwanego przez:
                         smtp.Port = 25;
                         smtp.EnableSsl = true;
                         await smtp.SendMailAsync(message);
-
                     }
                 }
                 if (rolaUzytkownika.ToString() == "dealer")
@@ -195,8 +193,6 @@ Obsługiwanego przez:
                 //    dealer = dealer.Replace("###HASLO###", haslo);
                     message.Body = dealer;
                     message.IsBodyHtml = false;
-
-
                     using (var smtp = new SmtpClient())
                     {
                         var credential = new NetworkCredential
@@ -209,7 +205,6 @@ Obsługiwanego przez:
                         smtp.Port = 25;
                         smtp.EnableSsl = true;
                         await smtp.SendMailAsync(message);
-
                     }
                 }
                 if (rolaUzytkownika.ToString() == "admin")
@@ -225,8 +220,6 @@ Obsługiwanego przez:
                     gea = gea.Replace("<serial_number>", sg.serial_number);
                     message.Body = gea;
                     message.IsBodyHtml = false;
-
-
                     using (var smtp = new SmtpClient())
                     {
                         var credential = new NetworkCredential
@@ -239,7 +232,6 @@ Obsługiwanego przez:
                         smtp.Port = 25;
                         smtp.EnableSsl = true;
                         await smtp.SendMailAsync(message);
-
                     }
                 }
             }
@@ -327,18 +319,15 @@ Obsługiwanego przez:
                            var account = new AccountController();
                            var rolaUzytkownika = account.UserManager.GetRoles(listaUzytkownikow[k].Id);
                            string test = "test";
-
                            if (rolaUzytkownika.ToString() == "rolnik")
                            {
                                port.WriteLine("Szanowny Kliencie uprzejmie informujemy, że nadszedł czas dokonania okresowego serwisu.Prosimy o kontakt z Naszym Dealerem. Zespół GEA Polska." + '\x001a');
                                Thread.Sleep(250);
-
                            }
                            if (rolaUzytkownika.ToString() == "dealer")
                            {
                                port.WriteLine("Nadszedł czas serwisu urządzenia " + sg.serial_number + ". Zespół GEA Polska." + '\x001a');
                                Thread.Sleep(250);
-
                            }
                            if (rolaUzytkownika.ToString() == "admin")
                            {
@@ -348,7 +337,6 @@ Obsługiwanego przez:
                            {
                                port.WriteLine("Urządzenie " + sg.serial_number + " wymaga serwisu." + '\x001a');
                                Thread.Sleep(250);
-
                            }
                            Thread.Sleep(250);
                        }
@@ -358,12 +346,7 @@ Obsługiwanego przez:
                        ServiceGuard sg = bazaDanych.ServiceGuard.Find(dane[0]);
                        port.Close();
                        Thread.Sleep(500);
-                       port.Open();
-                       //  port.Close();
-                       /*   SerialPort port1 = new SerialPort(nazwaPortu, clockRate, parity, iloscDataBits, iloscStopBitow);
-                          port1.RtsEnable = true;
-                          port1.Handshake = Handshake.RequestToSend;
-                          port1.Open();*/
+                       port.Open();                    
                        port.Write("AT+CMGF=1\r");
                        //   Thread.Sleep(250);
                        port.WriteLine("AT+CMGS=\"" + sg.nr_tel + "\"\r");
@@ -376,12 +359,7 @@ Obsługiwanego przez:
                        nowyWpis.ServiceGuard_id_sg = sg.serial_number;
                        nowyWpis.serial_number = dane[0];
                        bazaDanych.Alarmy.Add(nowyWpis);
-                       bazaDanych.SaveChanges();
-                       // SerialPortController s = new SerialPortController();
-                       //    s.wyslijSMSAlarm(dane[0]);
-                       //    Thread.Sleep(250);
-                       //  Entities baza = new Entities();
-                       //  ServiceGuard sg = baza.ServiceGuard.Find(nrServiceGuard);
+                       bazaDanych.SaveChanges();                    
                        List<AspNetUsers> listaUzytkownikow = sg.AspNetUsers.ToList(); //lista przypisanych do danego SG
                        for (int l = 0; l < listaUzytkownikow.Count; l++)
                        {
@@ -439,7 +417,6 @@ Obsługiwanego przez:
                        string aktualnyStanRoboczogodzin = dane[2];
                        string godzinyDoSerwisu = (Convert.ToInt16(przedzial) - Convert.ToInt16(dane[3])).ToString();
                        string lokalizacja = dane[4];
-
                        ServiceGuard SG = bazaDanych.ServiceGuard.Find(dane[0]);
                        SG.aktualny_czas = Convert.ToInt16(aktualnyStanRoboczogodzin);
                        SG.do_serwisu = Convert.ToInt32(godzinyDoSerwisu);
@@ -499,7 +476,6 @@ Obsługiwanego przez:
                        ServiceGuard SG = bazaDanych.ServiceGuard.Find(dane[0]);
                        SG.ServiceManager.nr_tel = SG.ServiceManager.nr_tel_temp;
                        bazaDanych.SaveChanges();
-
                    }
                }
                catch (Exception ex)
